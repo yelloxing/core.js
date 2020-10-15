@@ -6,5 +6,7 @@
  * @returns {Array} 返回属性数组
  */
 export default function (value) {
-    return value.replace(/\[/g, ".").replace(/\]/g, '').replace(/"/g, "").replace(/'/g, "").split('.');
+    let pathArray = value.replace(/\[/g, ".").replace(/\]/g, '').replace(/"/g, "").replace(/'/g, "").split('.');
+    if (pathArray[0] == '') pathArray.shift();
+    return pathArray;
 };
