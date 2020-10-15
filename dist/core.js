@@ -5,14 +5,14 @@
 *
 * author 心叶
 *
-* version 0.3.7
+* version 0.4.0
 *
 * build Wed Aug 21 2019
 *
 * Copyright yelloxing
 * Released under the MIT license
 *
-* Date:Thu Dec 12 2019 16:14:55 GMT+0800 (GMT+08:00)
+* Date:Thu Oct 15 2020 09:52:25 GMT+0800 (GMT+08:00)
 */
 
 "use strict";
@@ -730,7 +730,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function stringToPath(value) {
-    return value.replace(/\[/g, ".").replace(/\]/g, '').replace(/"/g, "").replace(/'/g, "").split('.');
+    var pathArray = value.replace(/\[/g, ".").replace(/\]/g, '').replace(/"/g, "").replace(/'/g, "").split('.');
+    if (pathArray[0] == '') pathArray.shift();
+    return pathArray;
   }
   /**
    * 把属性字符串统一变成数组（数组每个值是一个简单的属性）

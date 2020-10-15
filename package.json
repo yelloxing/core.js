@@ -1,6 +1,6 @@
 {
   "name": "@yelloxing/core.js",
-  "version": "0.3.7",
+  "version": "0.4.0",
   "description": "🐠 A modern JavaScript utility library delivering modularity, performance, & extras.",
   "main": "dist/core.min.js",
   "module": "dist/core.min.js",

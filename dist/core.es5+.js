@@ -5,14 +5,14 @@
 *
 * author 心叶
 *
-* version 0.3.7
+* version 0.4.0
 *
 * build Wed Aug 21 2019
 *
 * Copyright yelloxing
 * Released under the MIT license
 *
-* Date:Thu Dec 12 2019 16:14:55 GMT+0800 (GMT+08:00)
+* Date:Thu Oct 15 2020 09:52:25 GMT+0800 (GMT+08:00)
 */
 
 (function () {
@@ -690,7 +690,9 @@
      * @returns {Array} 返回属性数组
      */
     function stringToPath (value) {
-        return value.replace(/\[/g, ".").replace(/\]/g, '').replace(/"/g, "").replace(/'/g, "").split('.');
+        let pathArray = value.replace(/\[/g, ".").replace(/\]/g, '').replace(/"/g, "").replace(/'/g, "").split('.');
+        if (pathArray[0] == '') pathArray.shift();
+        return pathArray;
     }
 
     /**

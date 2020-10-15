@@ -1,4 +1,4 @@
-QUnit.test('set', 3, function () {
+QUnit.test('set', 4, function () {
 
     var object = {
         a: {
@@ -6,9 +6,10 @@ QUnit.test('set', 3, function () {
         }
     };
 
-    deepEqual(__.set(object, 'a.b.c', 10), {
+    deepEqual(__.set(object, 'a.c', 10), {
         "a": {
-            "b": [1, 2, 3]
+            "b": [1, 2, 3],
+            "c": 10
         }
     });
 
@@ -17,6 +18,7 @@ QUnit.test('set', 3, function () {
     }), {
         "a": {
             "b": [1, 2, 3],
+            "c": 10,
             "e": {
                 "g": {
                     "newValue": "-_-"
@@ -31,6 +33,20 @@ QUnit.test('set', 3, function () {
         "a": {
             "2": [undefined, "_-_"],
             "b": [1, 2, 3],
+            "c": 10,
+            "e": {
+                "g": {
+                    "newValue": "-_-"
+                }
+            }
+        }
+    });
+
+    deepEqual(__.set(object, '["a"].b', 10), {
+        "a": {
+            "2": [undefined, "_-_"],
+            "b": 10,
+            "c": 10,
             "e": {
                 "g": {
                     "newValue": "-_-"
