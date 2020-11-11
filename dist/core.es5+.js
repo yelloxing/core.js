@@ -5,14 +5,14 @@
 *
 * author 心叶
 *
-* version 0.4.1
+* version 0.4.2
 *
 * build Wed Aug 21 2019
 *
 * Copyright yelloxing
 * Released under the MIT license
 *
-* Date:Wed Nov 11 2020 11:04:03 GMT+0800 (GMT+08:00)
+* Date:Wed Nov 11 2020 11:10:33 GMT+0800 (GMT+08:00)
 */
 
 (function () {
@@ -1486,7 +1486,7 @@
             // 根据传递的原始数据，生成内部统一结构
             (function createTree(pdata, pid) {
                 let children = config.child(pdata, initTree), flag;
-                num += children.length;
+                num += children ? children.length : 0;
                 for (flag = 0; children && flag < children.length; flag++) {
                     id = config.id(children[flag]);
                     tempTree[pid].children.push(id);

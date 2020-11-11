@@ -124,7 +124,7 @@ export default function (_config) {
         // 根据传递的原始数据，生成内部统一结构
         (function createTree(pdata, pid) {
             let children = config.child(pdata, initTree), flag;
-            num += children.length;
+            num += children ? children.length : 0;
             for (flag = 0; children && flag < children.length; flag++) {
                 id = config.id(children[flag]);
                 tempTree[pid].children.push(id);
