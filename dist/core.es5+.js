@@ -5,14 +5,14 @@
 *
 * author 心叶
 *
-* version 0.4.0
+* version 0.4.1
 *
 * build Wed Aug 21 2019
 *
 * Copyright yelloxing
 * Released under the MIT license
 *
-* Date:Thu Oct 15 2020 09:52:25 GMT+0800 (GMT+08:00)
+* Date:Wed Nov 11 2020 11:02:15 GMT+0800 (GMT+08:00)
 */
 
 (function () {
@@ -1481,9 +1481,12 @@
                 "id": id,
                 "children": []
             };
+
+            let num = 1;
             // 根据传递的原始数据，生成内部统一结构
             (function createTree(pdata, pid) {
                 let children = config.child(pdata, initTree), flag;
+                num += children.length;
                 for (flag = 0; children && flag < children.length; flag++) {
                     id = config.id(children[flag]);
                     tempTree[pid].children.push(id);
@@ -1497,7 +1500,10 @@
                 }
             })(temp, id);
 
-            return [rid, tempTree];
+            return {
+                value: [rid, tempTree],
+                num
+            };
         };
 
         // 可以传递任意格式的树原始数据
@@ -1505,10 +1511,21 @@
         let tree = function (initTree) {
 
             let treeData = toInnerTree(initTree);
-            alltreedata = treeData[1];
-            rootid = treeData[0];
-            return update();
+            alltreedata = treeData.value[1];
+            rootid = treeData.value[0];
 
+            if (treeData.num == 1) {
+                alltreedata[rootid].left = 0.5;
+                alltreedata[rootid].top = 0.5;
+                return {
+                    deep: 1,
+                    node: alltreedata,
+                    root: rootid,
+                    size: 1
+                };
+            }
+
+            return update();
         };
 
         // 获取根结点的方法:root(initTree)
